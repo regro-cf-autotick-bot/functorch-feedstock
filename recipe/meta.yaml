@@ -10,7 +10,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   skip: true  # [win]
   # functorch doesn't require cuda the compiler
   # in the future, it may be necessary to build against cu1xx versions
@@ -30,6 +30,10 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - python                                   # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}       # [build_platform != target_platform]
+    - pytorch                                  # [build_platform != target_platform]
+
   host:
     - pip
     - python
