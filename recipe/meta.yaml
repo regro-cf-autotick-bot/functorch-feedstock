@@ -52,8 +52,6 @@ test:
     - pip
     - pytest
     - expecttest
-    # torchvision isn't needed really, but some tests softly depend on it
-    - torchvision
   imports:
     - functorch
   commands:
