@@ -52,6 +52,7 @@ test:
     - pip
     - pytest
     - expecttest
+    - pyyaml
   imports:
     - functorch
   commands:
