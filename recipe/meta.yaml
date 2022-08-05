@@ -1,4 +1,4 @@
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 
 package:
   name: functorch
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/pytorch/functorch/archive/v{{ version }}.tar.gz
-  sha256: ea6446b60d5e0847140e1a0dcb91d8a7de2b5844bba7c3f7560eb5020a05881f
+  sha256: ea6aa67c32250040295d0e50c06444b829787f5474586e29381fe8c7989bb87e
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
