@@ -1,65 +1,35 @@
-{% set version = "0.2.1" %}
+{% set version = "1.13.0" %}
 
 package:
   name: functorch
   version: {{ version }}
 
 source:
+  # This is a dummy package and has been included into pytorch itself
+  # https://github.com/pytorch/functorch/releases/tag/v1.13.0
   url: https://github.com/pytorch/functorch/archive/v{{ version }}.tar.gz
-  sha256: ea6aa67c32250040295d0e50c06444b829787f5474586e29381fe8c7989bb87e
+  sha256: f4788e3d25f25e89aee90f8e9a4eb09ed51c55553b27a6e85c894743d90a600c
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
-  skip: true  # [win]
-  # functorch doesn't require cuda the compiler
-  # in the future, it may be necessary to build against cu1xx versions
-  skip: true  # [cuda_compiler_version != "None"]
-  detect_binary_files_with_prefix: false
-  missing_dso_whitelist:
-    # conda-forge::pytorch provides these libs
-    - $RPATH/libc10_cuda.so
-    - $RPATH/libtorch_python.so
-    - $RPATH/libtorch_cpu.so
-    - $RPATH/libc10.so
-    - $RPATH/libc10_cuda.dylib
-    - $RPATH/libtorch_python.dylib
-    - $RPATH/libtorch_cpu.dylib
-    - $RPATH/libc10.dylib
+  number: 0
+  noarch: python
 
 requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - python                                   # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}       # [build_platform != target_platform]
-    - pytorch                                  # [build_platform != target_platform]
-
   host:
-    - pip
-    - python
-    - pytorch
+    - python >=3.7
+    - pytorch {{ version }}
   run:
-    - python
-    # we rely on global pinning to resolve pytorch
-    # functorch 0.1.x requires pytorch 1.11.x
-    # functorch 0.2.x requires pytorch 1.12.x
-    - pytorch
+    - python >=3.7
+    - pytorch {{ version }}
 
 test:
-  source_files:
-    - test
   requires:
     - pip
-    - pytest
-    - expecttest
-    - pyyaml
   imports:
     - functorch
   commands:
     - pip check
-    # adding two tests from readme besides the sanity check in run_test.py
-    - pytest test/test_vmap.py -v
-    - pytest test/test_eager_transforms.py -v
+
 
 about:
   home: https://github.com/pytorch/functorch
