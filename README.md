@@ -1,11 +1,11 @@
-About functorch
-===============
+About functorch-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/functorch-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/pytorch/functorch
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/functorch-feedstock/blob/main/LICENSE.txt)
 
 Summary: functorch is JAX-like composable function transforms for PyTorch
 
