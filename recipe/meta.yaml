@@ -1,4 +1,4 @@
-{% set version = "2.0.0" %}
+{% set version = "141807" %}
 
 package:
   name: functorch
@@ -10,8 +10,8 @@ source:
   # we use the pytorch/pytorch archive because 
   # they publish wheels for each pytorch version, but not on their repo
   # https://pypi.org/project/functorch/#history
-  url: https://github.com/pytorch/pytorch/archive/v{{ version }}.tar.gz
-  sha256: 4edf37dd0f621c9e3e31a6b01d190944187dd7b014d5efcba88736402722b40c
+  url: https://github.com/pytorch/pytorch/archive/{{ version }}.tar.gz
+  sha256: bd289ab941a04ac4cce312eb89eb8a8ee8544f71057926d88494ed7051c3ce10
 build:
   number: 0
   noarch: python
