@@ -13,20 +13,21 @@ source:
   url: https://github.com/pytorch/pytorch/archive/v{{ version }}.tar.gz
   sha256: 4edf37dd0f621c9e3e31a6b01d190944187dd7b014d5efcba88736402722b40c
 build:
-  number: 0
+  number: 1
   noarch: python
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pytorch >={{ version }}
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - pytorch >={{ version }}
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   imports:
     - functorch
   commands:
